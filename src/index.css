@@ -77,22 +77,40 @@ button.roll-dice {
   font-size: 1.1rem;
 }
 
-.timer {
-  font-family: inherit;
-  font-weight: bold;
-  font-size: 1.2rem;
-  color: #2b283a;
-  text-align: center;
-  margin-top: 15px;
-  margin-bottom: 5px;
-}
-
 .time-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
+  max-width: 350px;
+  background-color: #ffffff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-top: 15px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-.best-time {
+.stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #4a4e74;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.stat-value {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #2b283a;
+  margin: 0;
+}
+
+.best-time .stat-value {
   color: #5035ff;
 }

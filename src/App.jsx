@@ -21,6 +21,11 @@ const App = () => {
   const [dice, setDice] = useState(() => generateAllNewDice());
   const [time, setTime] = useState(0);
   const [timerActive, setTimerActive] = useState(false);
+  const [bestTime, setBestTime] = useState(() => {
+    return JSON.parse(localStorage.getItem("tenziesBestTime")) || 0;
+  });
+  // roll counter to see in how few rolls you could win the game.
+  const [rollCounter, setRollCounter] = useState(0);
 
   // In React, the preferred way to access a DOM node is by using a ref.
   const buttonRef = useRef(null);
@@ -37,6 +42,18 @@ const App = () => {
 
   useEffect(() => {
     buttonRef.current.focus();
+
+    if (gameWon) {
+      setBestTime((prevBest) => {
+        if (prevBest === 0 || prevBest > time) {
+          localStorage.setItem("tenziesBestTime", JSON.stringify(time));
+          return time;
+        }
+        return prevBest;
+      });
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameWon]);
 
   useEffect(() => {
@@ -66,10 +83,12 @@ const App = () => {
             : die;
         });
       });
+      setRollCounter((prev) => prev + 1);
     } else {
       setDice(generateAllNewDice());
       setTime(0);
       setTimerActive(false);
+      setRollCounter(0);
     }
   };
 
@@ -102,7 +121,22 @@ const App = () => {
           Roll until all dice are the same. Click each die to freeze it at its
           current value between rolls.
         </p>
-        <p className="timer">Time Elapsed: {formatTime(time)}s</p>
+        <div className="time-container">
+          <div className="stat-box">
+            <span className="stat-label">Rolls</span>
+            <span className="stat-value">{rollCounter}</span>
+          </div>
+          <div className="stat-box">
+            <span className="stat-label">Time</span>
+            <span className="stat-value">{formatTime(time)}</span>
+          </div>
+          <div className="stat-box best-time">
+            <span className="stat-label">Best</span>
+            <span className="stat-value">
+              {bestTime > 0 ? formatTime(bestTime) : "--:--"}
+            </span>
+          </div>
+        </div>
       </div>
       <div className="dice-container">{diceElements}</div>
       <button ref={buttonRef} className="roll-dice" onClick={rollDice}>
