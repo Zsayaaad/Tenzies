@@ -1,12 +1,12 @@
 import { useState } from "react";
 import Die from "./components/Die";
+import Confetti from "react-confetti";
 
 const generateAllNewDice = () => {
   const arr = [{}];
   for (let i = 0; i < 10; i++) {
     arr[i] = { id: i, value: Math.ceil(Math.random() * 6), isHeld: false };
   }
-  console.log(arr);
 
   return arr;
 };
@@ -14,18 +14,35 @@ const generateAllNewDice = () => {
 const App = () => {
   const [dice, setDice] = useState(() => generateAllNewDice());
 
-  const rollDice = () => {
-    // loop over dice elements
-    // - if any die has fals`y held prop
-    // -- update it's value
+  /**
+   * - loop on dice elements
+   * -- break if ( die.isHeld == false)
+   * -- take the first die.value
+   * --- break also if die.value != the first value
+   */
+  const gameWon =
+    dice.every((die) => die.isHeld) &&
+    dice.every((die) => die.value === dice[0].value);
 
-    setDice((prevDice) => {
-      return prevDice.map((die) => {
-        return die.isHeld === false
-          ? { ...die, value: Math.ceil(Math.random() * 6) }
-          : die;
+  if (gameWon) {
+    console.log("You won!");
+  }
+
+  const rollDice = () => {
+    if (!gameWon) {
+      // loop over dice elements
+      // - if any die has falsy held prop
+      // -- update it's value
+      setDice((prevDice) => {
+        return prevDice.map((die) => {
+          return die.isHeld === false
+            ? { ...die, value: Math.ceil(Math.random() * 6) }
+            : die;
+        });
       });
-    });
+    } else {
+      setDice(generateAllNewDice());
+    }
   };
 
   const hold = (id) => {
@@ -49,6 +66,7 @@ const App = () => {
 
   return (
     <main>
+      {gameWon && <Confetti />}
       <div>
         <h1 className="title">Tenzies</h1>
         <p className="instructions">
@@ -58,7 +76,7 @@ const App = () => {
       </div>
       <div className="dice-container">{diceElements}</div>
       <button className="roll-dice" onClick={rollDice}>
-        Roll
+        {gameWon ? "New Game" : "Roll"}
       </button>
     </main>
   );
