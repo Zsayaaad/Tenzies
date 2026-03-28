@@ -8,8 +8,7 @@ const generateAllNewDice = () => {
   for (let i = 0; i < 10; i++) {
     arr[i] = {
       id: i,
-      // value: Math.ceil(Math.random() * 6),
-      value: 5,
+      value: Math.ceil(Math.random() * 6),
       isHeld: false,
     };
   }
