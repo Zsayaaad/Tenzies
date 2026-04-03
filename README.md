@@ -2,13 +2,7 @@
 
 A fun and interactive dice game built with **React 19** and **Vite**. Roll the dice, freeze the ones you like, and try to get all ten dice showing the same number — as fast as possible and in as few rolls as you can!
 
-> **[Live Demo →](https://github.com/Zsayaaad/Tenzies)**
-
----
-
-## 📸 Preview
-
-![Tenzies Game Screenshot](https://img.shields.io/badge/Status-Complete-brightgreen?style=for-the-badge)
+> **[Live Demo →](https://tenzies-zsayyad-game.netlify.app/)**
 
 ---
 
@@ -28,15 +22,15 @@ A fun and interactive dice game built with **React 19** and **Vite**. Roll the d
 
 ## 🛠️ Tech Stack
 
-| Technology | Purpose |
-|---|---|
-| [React 19](https://react.dev/) | UI library with hooks (`useState`, `useEffect`, `useRef`) |
-| [Vite 8](https://vite.dev/) | Lightning-fast build tool & dev server |
-| [react-confetti](https://www.npmjs.com/package/react-confetti) | Confetti animation on game win |
-| [Google Fonts — Karla](https://fonts.google.com/specimen/Karla) | Custom typography |
-| [ESLint 9](https://eslint.org/) | Code linting & quality enforcement |
-| CSS3 Grid | Dice pip layout system |
-| localStorage | Best time persistence |
+| Technology                                                      | Purpose                                                   |
+| --------------------------------------------------------------- | --------------------------------------------------------- |
+| [React 19](https://react.dev/)                                  | UI library with hooks (`useState`, `useEffect`, `useRef`) |
+| [Vite 8](https://vite.dev/)                                     | Lightning-fast build tool & dev server                    |
+| [react-confetti](https://www.npmjs.com/package/react-confetti)  | Confetti animation on game win                            |
+| [Google Fonts — Karla](https://fonts.google.com/specimen/Karla) | Custom typography                                         |
+| [ESLint 9](https://eslint.org/)                                 | Code linting & quality enforcement                        |
+| CSS3 Grid                                                       | Dice pip layout system                                    |
+| localStorage                                                    | Best time persistence                                     |
 
 ---
 
@@ -96,12 +90,12 @@ Tenzies/
 
 ### Available Scripts
 
-| Script | Command | Description |
-|---|---|---|
-| Dev Server | `npm run dev` | Start Vite development server with HMR |
-| Build | `npm run build` | Create optimized production build in `dist/` |
-| Preview | `npm run preview` | Preview the production build locally |
-| Lint | `npm run lint` | Run ESLint to check code quality |
+| Script     | Command           | Description                                  |
+| ---------- | ----------------- | -------------------------------------------- |
+| Dev Server | `npm run dev`     | Start Vite development server with HMR       |
+| Build      | `npm run build`   | Create optimized production build in `dist/` |
+| Preview    | `npm run preview` | Preview the production build locally         |
+| Lint       | `npm run lint`    | Run ESLint to check code quality             |
 
 ---
 
@@ -172,7 +166,6 @@ This project is open source and available for personal and educational use.
 
 ## 🙌 Acknowledgments
 
-- Inspired by the classic [Tenzies dice game](https://en.wikipedia.org/wiki/Tenzi)
 - Built as part of the [Scrimba React Course](https://scrimba.com/learn/learnreact)
 
 ---
